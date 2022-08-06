@@ -1,6 +1,7 @@
 let time = 60;
 let timeId;
 let qI = 0;
+availableQuestions = [...questions];
 const main = document.querySelector('main');
 
 const handleClock = () => {
@@ -13,13 +14,20 @@ const handleClock = () => {
     };
     
     document.querySelector('.time').innerHTML = time;
+    
 };
 
 const handleAns = (correctAns) => {
-    console.log("correct Answer: ",correctAns);
+    
+    if (correctAns) {
+        //getNewQuestions();
+        console.log("correct Answer: ",correctAns);
+    }
+    else {
+        time -5;
+        console.log('wrong answer')
+        //getNewQuestions();
 
-    if (correctAns = true) {
-        init(qI);
     }
 };
 
@@ -38,11 +46,19 @@ const init = () => {
     
 };
 
+getNewQuestions = () => {
+     if(questions.length === 0 || time > 0) {
+        const questionsIndex = Math.floor(Math.random()* availableQuestions.length)
+        currentQuestion = availableQuestions[questionsIndex]
+        questions.innerText = currentQuestion.questions
+     }
+}
+document.querySelector('.start').addEventListener("click", init);
 // getNewQuestions = () => {
 //     if (qI === 0 || time > 0)
 // };
 
-document.querySelector('.start').addEventListener("click", init);
+
 
 
 
