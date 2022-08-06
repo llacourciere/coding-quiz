@@ -1,36 +1,48 @@
+let time = 60;
+let timeId;
+let qI = 0;
+const main = document.querySelector('main');
 
-
-
-
-//create question objects
-//should these objects be an array of objects?
-let question = {
-    title: 'Which of these is falsey',
-    alternatives: ['1', '0', 'true', '-1'],
-    correct: 2
+const handleClock = () => {
+    
+    time--;
+    
+    if (time <1) {
+        clearInterval(timeId);
+        time = 0;
+    };
+    
+    document.querySelector('.time').innerHTML = time;
 };
 
-// let question2 = {
-//     title: 'Which of these is a CSS feature',
-//     alternatives: ['div', 'background color', 'background-color', 'function'],
-//     correct: 3
-// };
+const handleAns = (correctAns) => {
+    console.log("correct Answer: ",correctAns);
 
-// let question3 = {
-//     title: 'Which of these identifies a div',
-//     alternatives: ['ID' , 'li', 'element', 'function'],
-//     correct: 1
-// };
+    if (correctAns = true) {
+        init(qI);
+    }
+};
 
-function showQuestion(q) {
-    //select the element to allow it to show on the page
-    let titleDiv = document.getElementById('title');
-    titleDiv.textContent = q.title;
+const init = () => {
     
-//get the options to show up
-    let alts = document.querySelectorAll('.alternative');
-    alts.forEach(function(element, index){
-        element.textContent = q.alternatives[index];
+    let { Q,A,C } = questions[qI];
+    
+    timeId = setInterval(handleClock, 1000);
+    
+    main.innerHTML = `<h1>${Q}</h1>`;
+    
+    A.forEach(ans => {
+        main.innerHTML += `<button onclick="handleAns('${C}')">${ans}</button>`;
     });
-}
-showQuestion(question);
+
+    
+};
+
+// getNewQuestions = () => {
+//     if (qI === 0 || time > 0)
+// };
+
+document.querySelector('.start').addEventListener("click", init);
+
+
+
