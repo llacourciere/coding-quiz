@@ -18,12 +18,12 @@ const questions = [
     {
         Q:'question 4',
         A: ['a', 'b','c', 'd'],
-        C: 'b'
+        C: 4
     },
     {
         Q:'question 5',
         A: ['a', 'b','c', 'd'],
-        C: 'b'
+        C: 3
     },
 ];
 
