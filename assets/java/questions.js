@@ -3,12 +3,12 @@ const questions = [
     {
         Q:'Which of these is falsey',
         A: ['1', '0', 'true', '-1'],
-        C: 2
+        C: '0'
     },
     {
         Q:'Which of these is a CSS feature',
         A: ['div', 'background color', 'background-color', 'function'],
-        C: 3
+        C: 'background-color'
     },
     {
         Q:'Which of these identifies a div',
