@@ -12,18 +12,18 @@ const questions = [
     },
     {
         Q:'Which of these identifies a div',
-        A: ['ID' , 'li', 'element', 'function'],
-        C: 1
+        A: ['id' , 'li', 'element', 'function'],
+        C: 'id'
     },
     {
-        Q:'question 4',
-        A: ['a', 'b','c', 'd'],
-        C: 4
+        Q:'What does CSS Stand For?',
+        A: ['Cool Sock Style', 'Computer System Styling','Cascading Style Storage', 'Cascading Style Sheets'],
+        C: 'Cascading Style Sheets'
     },
     {
-        Q:'question 5',
-        A: ['a', 'b','c', 'd'],
-        C: 3
+        Q:'How would you target class = "pizza" in css',
+        A: ['#pizza', '$pizza','.pizza', '!pizza'],
+        C: '.pizza'
     },
 ];
 

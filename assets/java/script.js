@@ -38,22 +38,15 @@ const reinit = (index) => {
 
 };
 
-
 var handleAns = (C, ans) => {
-    console.log(C);
-    console.log(ans)
     if (C !== ans) {
-        console.log('wrong answer');
         time -= 5;
     }
     else {
-        console.log('correct answer')
+      // calculateScore();
     }
     getNewQuestions ();
 };
-
-
-
 
 const maxQuestions = 5
 getNewQuestions = () => {
@@ -62,8 +55,17 @@ getNewQuestions = () => {
         reinit(qI);
     }
     else {
-        //show final score 
+       showFinalScore();
     }
+};
+
+var calculateScore = function(event) {
+
+}
+var showFinalScore = () => {
+   if (time == 0 || qI == questions.length) {
+    window.location.href ='highscores.html' 
+   }
 };
 document.querySelector('.start').addEventListener("click", init);
 
