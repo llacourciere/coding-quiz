@@ -34,3 +34,9 @@ main {
     margin: 5vh auto;
     text-align: center;
 }
+#high-score-list {
+    width: 80%;
+    background-color: purple;
+    color: aliceblue;
+    padding: 6px;
+}
