@@ -1,7 +1,7 @@
 let time = 30;
 let timeId;
 let qI = 0;
-let score = 0;
+var scores = [];
 const formEl = document.querySelector('#score-name');
 const scoreNameEl = document.querySelector('#score-names')
 
@@ -11,15 +11,13 @@ const main = document.querySelector('main');
 const handleClock = () => {
 
     time--;
-
+        
     if (time < 1) {
         clearInterval(timeId);
         time = 0;
-        showFinalScore();
+        return showFinalScore();
     };
-
     document.querySelector('.time').innerHTML = time;
-
 };
 
 //starts the game and the timer count down
@@ -41,18 +39,12 @@ const reinit = (index) => {
     A.forEach(ans => {
         main.innerHTML += `<button onclick="handleAns('${C}','${ans}')">${ans}</button>`;
     });
-    return;
-
 };
 
 
 var handleAns = (C, ans) => {
     if (C !== ans) {
         time -= 5;
-    }
-    else {
-        score++;
-        // calculateScore();
     }
     getNewQuestions();
 };
@@ -68,42 +60,55 @@ getNewQuestions = () => {
     }
 };
 
-//calculates how many questions the player got correct
-// var calculateScore = function () {
-
-// };
 // var createScoreEl = function () {
 
 // }
 
 //takes player to score page & will show final score
 var showFinalScore = () => {
-    if (time == 0 || qI == questions.length) {
-        window.location.href = 'highscores.html'
-    }
-};
+    clearInterval(timeId);
+      document.body.innerHTML = `
+      <nav>
+      <a href="./index.html" ><button class="scores">Take Quiz Again</button></a>
+      <h3>Highscores<span class="highscores"></span> </h3>
+  </nav>
 
-//allows player to input name to save score
+      <section id="high-score">
+          <div id="score-name">
+              <input id="name-form" type="text" name="name" placeholder="Name">
+              <button onclick="nameFormHandler()">Submit</button>
+          </div>
+
+          <section class="high-score-list">
+              <ul class="score-list" id="score-names">
+                
+              </ul>
+          </section>
+      </section>
+      
+      `;
+    
+};
 var nameFormHandler = function (event) {
 
-    event.preventDefault();
-    
     var nameInput = document.querySelector("#name-form").value;
     // check if inputs are empty (validate)
+    
+    console.log(nameInput,': ',time);
+
     if (!nameInput) {
         alert("You need to fill out the form!");
         return false;
     }
     else {
-        
         var scoreDataObj = {
            name: nameInput,
-           //score: calculateScore()
+           score: time
        };
-       console.log(scoreDataObj);
-        //createScoreEl(scoreDataObj);
+       scores = scoreDataObj;
+       saveScores();
+
     }
-    
 };
 
 //load and save scores to local storage
@@ -121,16 +126,15 @@ var loadScores = function() {
     // parse into array of objects
     savedScores= JSON.parse(savedScores);
   
-    // loop through savedTasks array
     for (var i = 0; i < savedScores.length; i++) {
       createScoreEl(savedScores[i]);
     }
   };
-formEl.addEventListener('submit', nameFormHandler);
-//document.querySelector('.start').addEventListener("click", init);  
+
+document.querySelector('.start').addEventListener("click", init);  
 
 
-
+loadScores();
 
 
 
