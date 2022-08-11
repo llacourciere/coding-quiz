@@ -21,9 +21,19 @@ const questions = [
         C: 'Cascading Style Sheets'
     },
     {
-        Q:'How would you target class = "pizza" in css',
-        A: ['#pizza', '$pizza','.pizza', '!pizza'],
-        C: '.pizza'
+        Q:'How would you test an event in JS on the console?',
+        A: ['debugger', 'console.log','enter', '++'],
+        C: 'console.log'
+    },
+    {
+        Q:'Strings must be enlosed in what?',
+        A: ['curly brackets', 'semicolons','dollar signs', 'quotes'],
+        C:  'quotes'
+    },
+    {
+        Q:'How do you create a new file in terminal/bash',
+        A: ['mkdir', 'code .','touch .', 'open .'],
+        C: 'touch .'
     },
 ];
 

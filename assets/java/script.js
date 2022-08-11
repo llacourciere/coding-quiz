@@ -1,4 +1,4 @@
-let time = 30;
+let time = 60;
 let timeId;
 let qI = 0;
 var scores = [];
@@ -45,6 +45,10 @@ const reinit = (index) => {
 var handleAns = (C, ans) => {
     if (C !== ans) {
         time -= 5;
+        main.innerHTML = `<p>Wrong Answer!<p>`
+    }
+    else {
+        main.innerHTML = `<p>Right Answer!<p>`
     }
     getNewQuestions();
 };
@@ -80,8 +84,8 @@ var showFinalScore = () => {
           </div>
 
           <section class="high-score-list">
-              <ul class="score-list" id="score-names">
-                
+              <ul onchange="loadScores()" class="score-list" id="score-names">
+                <li ></li>
               </ul>
           </section>
       </section>
@@ -134,7 +138,7 @@ var loadScores = function() {
 document.querySelector('.start').addEventListener("click", init);  
 
 
-loadScores();
+
 
 
 
